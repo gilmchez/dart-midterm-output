@@ -18,6 +18,9 @@ void main() {
     print('Papel, Gunting, Bato! Whats your pick?');
     String choice = stdin.readLineSync();
 
+    if (equalsIgnoreCase(choice, "Papel") ||
+        equalsIgnoreCase(choice, "Gunting") ||
+        equalsIgnoreCase(choice, "Bato")) {
 
     List games = ["Papel", "Gunting", "Bato"];
 
@@ -81,7 +84,9 @@ void main() {
 
       n++;
       round++;
-
+    }
+    else
+    print('Wrong input. Try Again.');
 
     }
 
