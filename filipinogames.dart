@@ -4,85 +4,100 @@ import "dart:io";
 
 
 void main() {
- int n=0;
- int j=0;
- int k=0;
- int round=1;
-while(n<3) {
-  print('Round: $round');
+  int n = 0;
+  int j = 0;
+  int k = 0;
+  int round = 1;
+  while (n < 3) {
+    bool equalsIgnoreCase(String string1, String string2) {
+      return string1?.toLowerCase() == string2?.toLowerCase();
 
-  print('Papel, Gunting, Bato! Whats your pick?');
-  String choice = stdin.readLineSync();
-  List games = ["Papel", "Gunting", "Bato"];
-  int rand = Random().nextInt(games.length);
-  String gamesbot = games[rand];
+    }
+    print('Round: $round');
 
-  switch(rand) {
-    case 0:
-      {
-        if (gamesbot == "Papel" && choice == "Gunting") {
-          print('Bot:${gamesbot}');
-          j++;
-        }
-        if (gamesbot == "Papel" && choice == "Bato") {
-          print('Bot:${gamesbot}');
-          k++;
-        }
-        else if (gamesbot.compareTo(choice) == 0) {
-          print('Bot:${gamesbot}-Whoops! Pareho');
-        }
+    print('Papel, Gunting, Bato! Whats your pick?');
+    String choice = stdin.readLineSync();
+
+
+    List games = ["Papel", "Gunting", "Bato"];
+
+    int rand = Random().nextInt(games.length);
+    String gamesbot = games[rand];
+
+
+
+      switch (rand) {
+        case 0:
+          {
+
+            if (gamesbot == "Papel" && equalsIgnoreCase(choice, "Gunting")) {
+              print('Bot:${gamesbot}');
+              j++;
+            }
+            if (gamesbot == "Papel" && equalsIgnoreCase(choice, "Bato")) {
+              print('Bot:${gamesbot}');
+              k++;
+            }
+            else if (equalsIgnoreCase(choice, gamesbot)) {
+              print('Bot:${gamesbot}-Whoops! Pareho');
+            }
+          }
+          break;
+
+
+        case 1:
+          {
+            if (gamesbot == "Gunting" && equalsIgnoreCase(choice, "Papel")) {
+              print('Bot:${gamesbot}');
+              k++;
+            }
+            if (gamesbot == "Gunting" && equalsIgnoreCase(choice, "Bato")) {
+              print('Bot:${gamesbot}');
+              j++;
+            }
+            else if (equalsIgnoreCase(choice, gamesbot)) {
+              print('Bot:${gamesbot}-Whoops! Pareho');
+            }
+          }
+          break;
+
+        case 2:
+          {
+            if (gamesbot == "Bato" && equalsIgnoreCase(choice, "Papel")) {
+              print('Bot:${gamesbot}');
+              j++;
+            }
+            if (gamesbot == "Bato" && equalsIgnoreCase(choice, "Gunting")) {
+              print('Bot:${gamesbot}');
+              k++;
+            }
+            else if (equalsIgnoreCase(choice, gamesbot)) {
+              print('Bot:${gamesbot}-Whoops! Pareho');
+            }
+          }
+          break;
       }
-      break;
 
 
-    case 1:
-      {
-        if (gamesbot == "Gunting" && choice == "Papel") {
-          print('Bot:${gamesbot}');
-          k++;
-        }
-        if (gamesbot == "Gunting" && choice == "Bato") {
-          print('Bot:${gamesbot}');
-          j++;
-        }
-        else if (gamesbot.compareTo(choice) == 0) {
-          print('Bot:${gamesbot}-Whoops! Pareho');
-        }
+      n++;
+      round++;
+
+
+    }
+
+
+      print('Your Score: $j');
+      print('Bot Score: $k');
+      if (j > k) {
+        print('You Win!');
       }
-      break;
-
-    case 2:
-      {
-        if (gamesbot == "Bato" && choice == "Papel") {
-          print('Bot:${gamesbot}');
-          j++;
-        }
-        if (gamesbot == "Bato" && choice == "Gunting") {
-          print('Bot:${gamesbot}');
-          k++;
-        }
-        else if (gamesbot.compareTo(choice) == 0) {
-          print('Bot:${gamesbot}-Whoops! Pareho');
-        }
+      if (j==k) {
+        print('Its Atay!');
       }
-      break;
-  }
+      if (j<k) {
+      print('You Lose!');
+      }
+    }
 
 
-  n++;
-  round++;
-}
 
- print('Your Score: $j');
- print('Bot Score: $k');
-if(j>k)
-{
-  print('You Win!');
-}
-else
-  {
-    print('You Lose');
-  }
-
-
-}
